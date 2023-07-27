@@ -7,36 +7,10 @@ const customerSchema = new mongoose.Schema({
     unique: true,
     required: true,
   },
-  email: {
-    type: String,
-    unique: true,
-    required: true,
-  },
   phone: {
     type: Number,
     unique: true,
     required: true,
-  },
-  gstno: {
-    type: String,
-    unique: true,
-    required: true,
-  },
-  address: {
-    type: String,
-    required: true,
-  },
-  city: {
-    type: String,
-    required: true,
-  },
-  state: {
-    type: String,
-    required: true,
-  },
-  dueAmount: {
-    type: Number,
-    default: 0,
   },
 });
 
@@ -145,14 +119,6 @@ const productSchemaEstimate = new mongoose.Schema({
     require: true,
   },
   unit: {
-    type: String,
-    required: true,
-  },
-  minimumStock: {
-    type: Number,
-    default: 5,
-  },
-  supplier: {
     type: String,
     required: true,
   },
@@ -330,8 +296,16 @@ const saleSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  customerPhoneNo: {
+    type: Number,
+    required: true,
+  },
   saleProducts: [
     {
+      partNo: {
+        type: String,
+        required: true,
+      },
       productName: {
         type: String,
         required: true,
@@ -370,10 +344,9 @@ const saleSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  oldAmt: {
-    type: Number,
-    required: true,
-  },
+  // oldAmt: {
+  //   type: Number,
+  // },
   roff: {
     type: Number,
     default: 0,

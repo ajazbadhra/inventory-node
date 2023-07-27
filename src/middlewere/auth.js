@@ -5,7 +5,7 @@ module.exports = async function(req, res, next) {
   const authHeader = req.header("authorization");
   const token = authHeader && authHeader.split(" ")[1];
 
-  if (!token) return res.status(401).json({ message: "Auth Error" });
+  if (!token) return res.status(401).json({ message: "Auth Error - user not looged in" });
 
   try {
     const decoded = jwt.verify(token, process.env.SECRET_KEY);
