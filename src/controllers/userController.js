@@ -50,7 +50,7 @@ const register = async (req, res) => {
       branchName,
     });
     await user.save();
-
+    console.log("User created");
     res.status(200).json({ data: "user created successfully" });
   } catch (err) {
     console.log(err);
@@ -97,6 +97,7 @@ const login = async (req, res) => {
         if (err) throw err;
         user.token = token;
         user.save();
+        console.log("User logged in")
         res.status(200).json({
           token,
         });
@@ -115,6 +116,7 @@ const logout = (req, res) => {
         const user = await User.findById(req.user.id);
         user.token = ""
         user.save()
+        console.log("User Logged out");
         res.json({ message: "Logged Out successfully" });
     });
   } catch (error) {
